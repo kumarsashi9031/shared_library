@@ -1,7 +1,6 @@
 package org.foo
-
-def checkOutFrom(repo) {
-  git url: "https://github.com/javaparser/javaparser-maven-sample.git/${repo}"
+class Git {
+  static def mvn(script, args) {
+    script.sh "${script.tool 'Default'}/bin/git -s ${script.env.HOME}/ -o ${args}"
+  }
 }
-
-return this
