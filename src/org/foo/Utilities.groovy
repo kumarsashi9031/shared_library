@@ -1,6 +1,8 @@
 package org.foo
-class Utilities {
-  static def mvn(script) {
-    script.sh "${script.tool 'Maven'}"
+class Utilities implements Serializable {
+  def steps
+  Utilities(steps) {this.steps = steps}
+  def mvn(args) {
+    steps.sh "${steps.tool 'Maven'}/bin/mvn -o ${args}"
   }
 }
