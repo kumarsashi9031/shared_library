@@ -1,6 +1,6 @@
 package org.foo
 class Gitcheckout {
   static def git(script, args) {
-    script "${script.tool 'Default'}${args}"
+    script.sh "${script.tool 'Default'}${args}"
   }
 }
