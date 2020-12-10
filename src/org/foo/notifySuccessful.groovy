@@ -1,5 +1,5 @@
 package org.foo
-     def notify(body,subject,mail) {
+     def notify(subject,body,mail) {
           emailext (
     subject: "STARTED: Job ' ${subject} ${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
     body: """<p>STARTED: Job '${body} ${env.JOB_NAME} [${env.BUILD_NUMBER}]':</p>
