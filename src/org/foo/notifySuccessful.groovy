@@ -1,7 +1,10 @@
 package org.foo
      def notify(body,subject,mail) {
-           emailext body: '''"${body}" $PROJECT_NAME - Build # $BUILD_NUMBER - $BUILD_STATUS:
-
-           Check console output at $BUILD_URL to view the results.''', compressLog: true, recipientProviders: [developers()], subject: '"${subject}"  $PROJECT_NAME - Build # $BUILD_NUMBER - $BUILD_STATUS!', to: "${mail}"
+          emailext (
+    subject: "STARTED: Job ' ${subject} ${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
+    body: """<p>STARTED: Job '${body} ${env.JOB_NAME} [${env.BUILD_NUMBER}]':</p>
+    <p>Check console output at &QUOT;<a href='${env.BUILD_URL}'>${env.JOB_NAME} [${env.BUILD_NUMBER}]</a>&QUOT;</p>""",
+    recipientProviders: [developers()] , to: "${mail}"
+    )
       }
     return this
